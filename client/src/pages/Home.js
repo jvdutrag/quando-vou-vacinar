@@ -172,7 +172,7 @@ function Home() {
                     ))
                   }
                 </Select>
-                <FormHelperText>Não encontrou seu estado na lista? Apenas inserimos estados que divulgaram um calendário completo de vacinação.</FormHelperText>
+                <FormHelperText>Não encontrou seu estado na lista? Apenas inserimos estados que divulgaram uma previsão de vacinação da população geral.</FormHelperText>
               </FormControl>
             </Grid>
             <Grid item xs={12}>
