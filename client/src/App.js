@@ -3,7 +3,6 @@ import { Container } from '@material-ui/core';
 
 import Home from './pages/Home';
 import Header from './components/Header';
-import Footer from './components/Footer';
 
 import './App.css';
 
@@ -22,7 +21,6 @@ function App() {
         <Container>
           <Header />
           <Home />
-          <Footer />
         </Container>
       </ThemeProvider>
   );
