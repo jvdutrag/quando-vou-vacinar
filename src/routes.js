@@ -7,6 +7,41 @@ const router = express.Router();
 const DaoSchedule = require('./daos/DaoSchedule');
 const DaoSource = require('./daos/DaoSource');
 
+router.post('/api/states', async (req, res) => {
+    if(req.get('Authorization') !== process.env.SECRET_KEY) {
+        return res.sendStatus(401);
+    }
+
+    const { state_code, source_url, schedulesInfo } = req.body;
+
+    if(!state_code || !source_url || !schedulesInfo) {
+        return res.send({ success: false, message: 'Missing Required Data' });
+    }
+
+    const source = await DaoSource.create({
+        state: state_code,
+        url: source_url
+    });
+
+    const schedulesToInsert = new Array();
+
+    schedulesInfo.forEach(schedule => {
+        schedulesToInsert.push({
+            state: state_code,
+            from_age: schedule.ages[0],
+            to_age: schedule.ages[1],
+            starts_at: schedule.starts_at,
+            ends_at: schedule.ends_at
+        });
+    });
+
+    const schedules = await DaoSchedule.createMultiple(schedulesToInsert);
+
+    return res.send({
+        source,
+        schedules
+    });
+});
 
 router.get('/api/states', async (req, res) => {
     const states = await DaoSource.findAll();

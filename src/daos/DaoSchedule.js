@@ -19,6 +19,10 @@ class DaoSchedule {
             }
         });
     }
+
+    async createMultiple(array) {
+        return Schedule.bulkCreate(array);
+    }
 }
 
 module.exports = new DaoSchedule();

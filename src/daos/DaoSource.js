@@ -16,6 +16,10 @@ class DaoSource {
             attributes: ['state']
         });
     }
+
+    async create(obj) {
+        return Source.create(obj);
+    }
 }
 
 module.exports = new DaoSource();
