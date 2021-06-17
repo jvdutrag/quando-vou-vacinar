@@ -16,7 +16,10 @@ class DaoSchedule {
             },
             attributes: {
                 exclude: ['id', 'state']
-            }
+            },
+            order: [
+                ['from_age', 'ASC']
+            ]
         });
     }
 
