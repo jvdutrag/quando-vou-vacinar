@@ -15,7 +15,13 @@ router.post('/api/states', async (req, res) => {
     const { state_code, source_url, schedulesInfo } = req.body;
 
     if(!state_code || !source_url || !schedulesInfo) {
-        return res.send({ success: false, message: 'Missing Required Data' });
+        return res.status(400).send({ success: false, message: 'Missing Required Data' });
+    }
+
+    const stateExists = await DaoSource.find(state_code);
+
+    if(stateExists) {
+        return res.status(400).send({ success: false, message: 'State Already Exists' });
     }
 
     const source = await DaoSource.create({
