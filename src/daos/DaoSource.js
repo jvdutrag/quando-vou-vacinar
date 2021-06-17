@@ -10,6 +10,12 @@ class DaoSource {
             }
         });
     }
+
+    async findAll() {
+        return Source.findAll({
+            attributes: ['state']
+        });
+    }
 }
 
 module.exports = new DaoSource();
