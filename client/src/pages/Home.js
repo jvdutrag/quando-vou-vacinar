@@ -81,7 +81,7 @@ function Home() {
                 successResult.schedule.is_current ? (
                   <span>O seu grupo começou a vacinação <strong>{moment(successResult.schedule.starts_at).fromNow()}</strong>!</span>
                 ) : (
-                  <span>Você irá vacinar <strong>{moment(successResult.schedule.starts_at).fromNow()}</strong>! 🎉 (<i>aproximadamente</i>)</span>
+                  <span>Você irá vacinar <strong>{moment(successResult.schedule.starts_at).fromNow()}</strong>! 🎉</span>
                 )
               }
             </AlertTitle>
@@ -89,6 +89,7 @@ function Home() {
               <ul>
                 <li>O seu grupo é o público geral das pessoas de <strong>{successResult.schedule.from_age}</strong> até <strong>{successResult.schedule.to_age}</strong> anos.</li>
                 <li>A vacinação do seu grupo vai de <strong>{moment(successResult.schedule.starts_at).format('DD/MM/YYYY')}</strong> até <strong>{moment(successResult.schedule.ends_at).format('DD/MM/YYYY')}</strong>.</li>
+                <li>Atenção: todas datas informadas são aproximadas! Não é certeza de que ocorrerão exatamente no período informado. Faça seu papel como cidadão de cobrar das autoridades competentes.</li>
               </ul>
 
               {
@@ -99,7 +100,7 @@ function Home() {
 
               <p>
                 <small>
-                  Atenção! Esta informação é <strong>oficial</strong>, retirada diretamente do calendário de vacinação divulgado pelo Governo do Estado de {successResult.state.name}. <Link href={successResult.schedule.source_url} target="_blank">Clique aqui</Link> para ver a fonte desta informação.
+                  Atenção! Esta informação foi obtida diretamente do Governo do Estado de {successResult.state.name}. <Link href={successResult.schedule.source_url} target="_blank">Clique aqui</Link> para ver a fonte desta informação.
                 </small>
               </p>
 
